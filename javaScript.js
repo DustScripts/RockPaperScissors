@@ -53,24 +53,24 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
   let playerWin = 0;
   let computerWin = 0;
-  const rounds = 5; // Number of rounds to play
+  // const rounds = 5; // Number of rounds to play
 
   // Play multiple rounds
-  for (let round = 0; round < rounds; round++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    console.log("Player's choice: " + playerSelection);
-    console.log("Computer's choice: " + computerSelection);
+  // for (let round = 0; round < rounds; round++) {
+  const playerSelection = getPlayerChoice();
+  const computerSelection = getComputerChoice();
+  console.log("Player's choice: " + playerSelection);
+  console.log("Computer's choice: " + computerSelection);
 
-    // Play the round and update win counts
-    const result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (result.includes("Win")) {
-      playerWin++;
-    } else if (result.includes("Lose")) {
-      computerWin++;
-    }
+  // Play the round and update win counts
+  const result = playRound(playerSelection, computerSelection);
+  console.log(result);
+  if (result.includes("Win")) {
+    playerWin++;
+  } else if (result.includes("Lose")) {
+    computerWin++;
   }
+  // }
 
   // Display the final score
   // Later maybe setup some kind of on-going scoreboard
