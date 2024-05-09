@@ -1,3 +1,32 @@
+document.getElementById("rock").addEventListener("click", function () {
+  const computerSelection = getComputerChoice();
+  console.log(`Computer picks ${computerSelection}`);
+  const playerSelection = "rock";
+  const result = playRound(playerSelection, computerSelection);
+  console.log(result);
+});
+
+document.getElementById("paper").addEventListener("click", function () {
+  const computerSelection = getComputerChoice();
+  console.log(`Computer picks ${computerSelection}`);
+  const playerSelection = "paper";
+  const result = playRound(playerSelection, computerSelection);
+  console.log(result);
+});
+
+document.getElementById("scissors").addEventListener("click", function () {
+  const computerSelection = getComputerChoice();
+  console.log(`Computer picks ${computerSelection}`);
+  const playerSelection = "scissors";
+  const result = playRound(playerSelection, computerSelection);
+  console.log(result);
+});
+
+// playerSelection = "rock";
+// computerSelection = "paper";
+
+// const result = playRound(playerSelection, computerSelection);
+
 // Randomize the computer pick
 // Can possibly make it more random maybe?
 function getComputerChoice() {
@@ -7,23 +36,23 @@ function getComputerChoice() {
 }
 
 // Get input and lowercase it
-function getPlayerChoice() {
-  let playerChoice = prompt(
-    "Enter your choice (Rock, Paper, or Scissors)"
-  ).toLowerCase();
+// function getPlayerChoice() {
+//   let playerChoice = prompt(
+//     "Enter your choice (Rock, Paper, or Scissors)"
+//   ).toLowerCase();
 
-  // Check if the user input is either Rock, Paper, or Scissors
-  while (
-    playerChoice !== "rock" &&
-    playerChoice !== "paper" &&
-    playerChoice !== "scissors"
-  ) {
-    playerChoice = prompt(
-      "Invalid input! Please enter Rock, Paper, or Scissors"
-    ).toLowerCase();
-  }
-  return playerChoice;
-}
+//   // Check if the user input is either Rock, Paper, or Scissors
+//   while (
+//     playerChoice !== "rock" &&
+//     playerChoice !== "paper" &&
+//     playerChoice !== "scissors"
+//   ) {
+//     playerChoice = prompt(
+//       "Invalid input! Please enter Rock, Paper, or Scissors"
+//     ).toLowerCase();
+//   }
+//   return playerChoice;
+// }
 
 // Play a single round of the game
 function playRound(playerSelection, computerSelection) {
@@ -86,4 +115,4 @@ function playGame() {
 }
 
 // Play the GAME!
-playGame();
+// playGame();
