@@ -1,61 +1,49 @@
-document.getElementById("rock").addEventListener("click", function () {
-  const computerSelection = getComputerChoice();
-  console.log(`Computer picks ${computerSelection}`);
-  const playerSelection = "rock";
-  const result = playRound(playerSelection, computerSelection);
-  console.log(result);
+// work on seeting up a results div that way the entire div can be removed
+// after results are done under the results-container section.
+
+const postResults = document.getElementById("results-container");
+const buttonId = ["rock", "paper", "scissors"];
+
+document.getElementById(buttonId[0]).addEventListener("click", function () {
+  btn(buttonId[0]);
 });
 
-document.getElementById("paper").addEventListener("click", function () {
-  const computerSelection = getComputerChoice();
-  console.log(`Computer picks ${computerSelection}`);
-  const playerSelection = "paper";
-  const result = playRound(playerSelection, computerSelection);
-  console.log(result);
+document.getElementById(buttonId[1]).addEventListener("click", function () {
+  btn(buttonId[1]);
 });
 
-document.getElementById("scissors").addEventListener("click", function () {
-  const computerSelection = getComputerChoice();
-  console.log(`Computer picks ${computerSelection}`);
-  const playerSelection = "scissors";
-  const result = playRound(playerSelection, computerSelection);
-  console.log(result);
+document.getElementById(buttonId[2]).addEventListener("click", function () {
+  btn(buttonId[2]);
 });
 
-// playerSelection = "rock";
-// computerSelection = "paper";
+function btn(idButton) {
+  const playerSelection = idButton;
+  const computerSelection = getComputerChoice();
 
-// const result = playRound(playerSelection, computerSelection);
+  const resultComputer = document.createElement("div");
+  resultComputer.classList.add("resultComputer");
+  resultComputer.textContent = `Computer selected ${computerSelection}`;
+  postResults.appendChild(resultComputer);
 
-// Randomize the computer pick
-// Can possibly make it more random maybe?
+  const resultPlayer = document.createElement("div");
+  resultPlayer.classList.add("resultPlayer");
+  resultPlayer.textContent = `Player selected ${playerSelection}`;
+  postResults.appendChild(resultPlayer);
+
+  const result = playRound(playerSelection, computerSelection);
+  console.log(result[0]);
+}
+
 function getComputerChoice() {
+  // Randomize the computer pick
+  // Can possibly make it more random maybe?
   const choices = ["rock", "paper", "scissors"];
   let randomChoice = Math.floor(Math.random() * choices.length);
   return choices[randomChoice];
 }
 
-// Get input and lowercase it
-// function getPlayerChoice() {
-//   let playerChoice = prompt(
-//     "Enter your choice (Rock, Paper, or Scissors)"
-//   ).toLowerCase();
-
-//   // Check if the user input is either Rock, Paper, or Scissors
-//   while (
-//     playerChoice !== "rock" &&
-//     playerChoice !== "paper" &&
-//     playerChoice !== "scissors"
-//   ) {
-//     playerChoice = prompt(
-//       "Invalid input! Please enter Rock, Paper, or Scissors"
-//     ).toLowerCase();
-//   }
-//   return playerChoice;
-// }
-
-// Play a single round of the game
 function playRound(playerSelection, computerSelection) {
+  // Play a single round of the game
   playerSelection = playerSelection.toLowerCase();
 
   // Setup winning move
@@ -67,19 +55,28 @@ function playRound(playerSelection, computerSelection) {
 
   // Check if it's a tie
   if (playerSelection === computerSelection) {
-    return "It's a tie! - No points awarded";
+    // return "It's a tie! - No points awarded";
+    return ["It's a tie! - No points awarded", "tie"];
   }
 
   // Determine the winner
   if (winningMove[playerSelection] === computerSelection) {
-    return "You Win! " + playerSelection + " beats " + computerSelection;
+    // return "You Win! " + playerSelection + " beats " + computerSelection;
+    return [
+      "You Win! " + playerSelection + " beats " + computerSelection,
+      "win",
+    ];
   } else {
-    return "You Lose! " + computerSelection + " beats " + playerSelection;
+    // return "You Lose! " + computerSelection + " beats " + playerSelection;
+    return [
+      "You Lose! " + computerSelection + " beats " + playerSelection,
+      "lose",
+    ];
   }
 }
 
-// Game play - set the rounds you want to play
 function playGame() {
+  // Game play - set the rounds you want to play
   let playerWin = 0;
   let computerWin = 0;
   // const rounds = 5; // Number of rounds to play
