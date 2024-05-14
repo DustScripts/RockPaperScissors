@@ -1,5 +1,4 @@
 const postResults = document.getElementById("results-container");
-const buttonId = ["rock", "paper", "scissors"];
 const btns = document.querySelectorAll(".btn");
 const resultComputer = document.createElement("p");
 const resultPlayer = document.createElement("p");
